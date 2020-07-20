@@ -1,0 +1,12 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  node-app:
+    build: .
+    ports:
+      - "8000:8000"
+# Notes:
+# No need to define the networking relationship between redis and node while using docker-compose
+# docker-compose automatically allows the containers to talk to one another
+# See output from 'docker-compose up': Creating network "visits_default" with the default driver
