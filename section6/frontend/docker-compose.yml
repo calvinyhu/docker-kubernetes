@@ -10,3 +10,11 @@ services:
     ports:
       - 3000:3000
     stdin_open: true # To fix issue https://github.com/facebook/create-react-app/issues/8688
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules # Do not map node_modules inside container, to outside container
+      - .:/app
+    command: npm t

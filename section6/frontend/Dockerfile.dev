@@ -6,6 +6,8 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm ci
 
+# This COPY is not necessary for development since the volume points to the src code outside the container
+# However, this is still required for production, so it acts a reminder to add it to the production Dockerfile
 COPY . .
 
 CMD ["npm", "start"]
