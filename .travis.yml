@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t calvinyhu/docker-kubernetes -f ./section6/frontend/Dockerfile.dev ./section6/frontend
+
+script:
+  - docker run calvinyhu/docker-kubernetes CI=true npm t
